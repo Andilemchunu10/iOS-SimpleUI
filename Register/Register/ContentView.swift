@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var displayText = ""
+    @State private var isRegistered = false
     
     var body: some View {
         
@@ -30,6 +31,7 @@ struct ContentView: View {
                 .foregroundColor(Color(.blue))
             Button("Register") {
                 if ((password==confirmPassword)) {
+                    isRegistered=true
                     displayText = "Succesful Registration"
                     Text(displayText)
                 } else {
@@ -39,7 +41,18 @@ struct ContentView: View {
                     // Show error message for invalid registration
                 }
             }
-            
+            .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .padding()
+                        .alert(isPresented: $isRegistered) {
+                            Alert(title: Text("Registration Successful"), message: Text("Welcome to the Dashboard"), dismissButton: .default(Text("OK")))
+                        }
+                        
+                        NavigationLink(destination: Dashboard(), isActive: $isRegistered) {
+                            EmptyView()
+                        }
             
             }
         }
