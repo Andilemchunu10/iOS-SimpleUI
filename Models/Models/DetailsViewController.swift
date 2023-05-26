@@ -9,8 +9,16 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
+    @IBOutlet weak var titleLabell: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    
+    var numLabel: String?
+    var titlelbl: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        numLabel.text = numLabel
+        titleLabell.text = titleLabell
 
         // Do any additional setup after loading the view.
     }
